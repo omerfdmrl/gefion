@@ -1,0 +1,150 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/omer/Desktop/Gefion2/storage/log/.ad59b3db13e0a65e3d0850625c39c1b6b38323bc-audit.json",
+    "files": [
+        {
+            "date": 1728939395689,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-14-23.log",
+            "hash": "108fec21a5cfbe7fa0c9d2c3a6d5532325d6551ce9adb61a91802028d7974435"
+        },
+        {
+            "date": 1728939808555,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-15-00.log",
+            "hash": "f1f93608c30191b09823872049db560b4038114e9656c4e05cb4e06abf4c06b4"
+        },
+        {
+            "date": 1729011634306,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-15-20.log",
+            "hash": "f6857c67e72cb58dc08b631c4e7549dc4f7cd76d2adda258228bf228e566f11d"
+        },
+        {
+            "date": 1729015410779,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-15-21.log",
+            "hash": "0a22a9877ba841b598b50b7dea7590fdab0410a7c676296bbc4f09ef39b590f5"
+        },
+        {
+            "date": 1729019013043,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-15-22.log",
+            "hash": "b330bd32328def8b167c23768ee6f81484387e2a633052965203e434fc52fa25"
+        },
+        {
+            "date": 1729022448417,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-15-23.log",
+            "hash": "2b227a78d4c9d590374a29f0ca9a5182a1c7ddf81310cf81fc67eaebd4e341c9"
+        },
+        {
+            "date": 1729062546143,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-16-10.log",
+            "hash": "034e66219594c970ba3bce343f724c33aadcf1c4c75df347ca44c0c2885c0083"
+        },
+        {
+            "date": 1729095496801,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-16-19.log",
+            "hash": "22a4b7df52acbdcbdc094b52f1ca9128e28b55dc4cc0bb9444a40a455a614887"
+        },
+        {
+            "date": 1729098039233,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-16-20.log",
+            "hash": "1b83a86454d58e86ddc2a0238307bbe2fd5607ce8698567fce6f8aed4c1e3d21"
+        },
+        {
+            "date": 1729101610048,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-16-21.log",
+            "hash": "ba01eb73d22dcabda3e4dcac9af2dbda84e8541a004eb31a17e9d12d0357c937"
+        },
+        {
+            "date": 1729105280672,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-16-22.log",
+            "hash": "20b1d7e83d1de28e511fbe3206e86322c2bbe0519226bedd75f78d6eb7a94088"
+        },
+        {
+            "date": 1729410831567,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-20-10.log",
+            "hash": "b1cd55fab3226cbcb6bd7b0bd893daaf7b1c76e6b41dc1dacb07ce7ad75884f2"
+        },
+        {
+            "date": 1729617053579,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-22-20.log",
+            "hash": "cbb5aad2b69e1764c2a13d09e712f6bd722277f225671df77cbc6fd610ca57e5"
+        },
+        {
+            "date": 1729620022358,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-22-21.log",
+            "hash": "bf8727f29b6c4e4f5698642d0d6f2fae653e17efa6a92c9a7a79d3f8917d5c95"
+        },
+        {
+            "date": 1729625362845,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-22-22.log",
+            "hash": "57b181ed52cf668a2a2b1ef8c6486c9f61176a5e25873bb8e0de1236f60ce9c9"
+        },
+        {
+            "date": 1729627213052,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-22-23.log",
+            "hash": "1ca30557c0a0b52c15e73c48a0c056be33707a6fb7c565f36b304f03ebed8f58"
+        },
+        {
+            "date": 1730020283855,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-12.log",
+            "hash": "511c3804c8c458b67e9b4ca7162f37d6f7c193c8675c51715baf926aef36f238"
+        },
+        {
+            "date": 1730025072282,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-13.log",
+            "hash": "eb19c4e371456f6b07c145c09251de0244da8b53a11cd5934abcdade22e9a42a"
+        },
+        {
+            "date": 1730028383525,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-14.log",
+            "hash": "720edb5909bab507a509279802607d020998c63570c8cf6dbc11e03e3e38ea98"
+        },
+        {
+            "date": 1730030482554,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-15.log",
+            "hash": "b484ba00d6f822eef86dfaa05cab222a31fbd8ae23ed5a18fff2a240fa846b54"
+        },
+        {
+            "date": 1730036862451,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-16.log",
+            "hash": "4522e939e65eb722ba2c2d98a7b2009ff40801c1517cd867c01762934b1b61dc"
+        },
+        {
+            "date": 1730040177657,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-17.log",
+            "hash": "500b4fa5baebc65875f8f97c64e6f3489525885306bafd1be71309c5b3b7a41a"
+        },
+        {
+            "date": 1730041209896,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-18.log",
+            "hash": "0e36fae3166c92220edd410fe2a2acc925305fab925ebc882fd9335c92f96adf"
+        },
+        {
+            "date": 1730061529448,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-27-23.log",
+            "hash": "a122fb0c868744cb03066ad11944db24e126fad54778377bbf650224fe1476d6"
+        },
+        {
+            "date": 1730113792935,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-28-14.log",
+            "hash": "53515cd8e6bc34c2d76056c428064370fc91a6150d163232673c9545e6adfa8c"
+        },
+        {
+            "date": 1730127102858,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-28-17.log",
+            "hash": "1158c204b0af02e6fcab0fcab1217571be4373a17fae0b1642ba3656b6a6544d"
+        },
+        {
+            "date": 1730130965578,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-28-18.log",
+            "hash": "dfc107634a638419822097fd7d0dbacd7a0c92014a139ee2ed6a5edb5e9f907c"
+        },
+        {
+            "date": 1730131205874,
+            "name": "/home/omer/Desktop/Gefion2/storage/log/2024-10-28-19.log",
+            "hash": "8ed385539724dcc8e804d55a04b7f39b2c808cfc2dda7d26087f6b8029dcfd94"
+        }
+    ],
+    "hashType": "sha256"
+}

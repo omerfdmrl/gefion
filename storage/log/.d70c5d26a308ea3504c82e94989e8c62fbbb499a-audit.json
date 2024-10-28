@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/omer/projects/Gefion (copy)/storage/log/.d70c5d26a308ea3504c82e94989e8c62fbbb499a-audit.json",
+    "files": [
+        {
+            "date": 1701519658909,
+            "name": "/home/omer/projects/Gefion (copy)/storage/log/2023-12-02-15.log",
+            "hash": "6d758ed5c144ad68e984e00ed9976becedac52f3718c8ee01ffba6afcc8c8190"
+        }
+    ],
+    "hashType": "sha256"
+}

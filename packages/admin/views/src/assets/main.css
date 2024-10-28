@@ -1,0 +1,28 @@
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.bg-size-cover {
+  background-size: cover !important;
+}
+.bg-pos-center {
+  background-position: center !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.fs-5-5 {
+  font-size: 1.125rem !important;
+}

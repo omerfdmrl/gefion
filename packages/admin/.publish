@@ -1,0 +1,2 @@
+config=/Configs/admin.config.js
+required=permission,auth

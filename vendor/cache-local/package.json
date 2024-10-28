@@ -1,0 +1,16 @@
+{
+  "name": "@gefion/cache-local",
+  "version": "1.0.0",
+  "description": "Gefion Cache Local",
+  "main": "CacheLocal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Cache",
+    "Local"
+  ],
+  "author": "Gefion",
+  "license": "ISC"
+}

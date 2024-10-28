@@ -1,0 +1,19 @@
+{
+  "name": "@gefion/server-express",
+  "version": "1.0.0",
+  "description": "Gefion Server Express",
+  "main": "ServerExpress.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Server",
+    "Express"
+  ],
+  "author": "Gefion",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

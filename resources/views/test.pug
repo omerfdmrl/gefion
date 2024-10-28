@@ -1,0 +1,13 @@
+extends layout
+
+block scripts
+  script(src='/jquery.js')
+  script(src='/pets.js')
+
+block content
+  h1= title
+  span= route("pref-home3", {tagId: 4})
+  div= storage("test")
+  - var pets = ['cat', 'dog']
+  each petName in pets
+    include pet

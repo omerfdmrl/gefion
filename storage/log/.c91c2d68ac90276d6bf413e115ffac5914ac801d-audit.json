@@ -1,0 +1,80 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/omer/projects/Gefion2/storage/log/.c91c2d68ac90276d6bf413e115ffac5914ac801d-audit.json",
+    "files": [
+        {
+            "date": 1701766767891,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-05-11.log",
+            "hash": "988b93ffd1da60c083ed19ce1f23810dfe4aa6374ebed3c4de87a363f87158f4"
+        },
+        {
+            "date": 1701865627974,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-06-15.log",
+            "hash": "dec3fc35d14805148812e2fbc0554d5f74b14685e35c7fb3fcdeeac516cdd26e"
+        },
+        {
+            "date": 1701978071378,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-07-22.log",
+            "hash": "de7775060020b1245b82c370442d80d77dbc3e84fc0b876b41afbc9c8d98e37a"
+        },
+        {
+            "date": 1702059905805,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-08-21.log",
+            "hash": "4f494340e57c59d514a65dacb0ce082df2b6b9d6ccd527bad068bfd0a518b34e"
+        },
+        {
+            "date": 1702120205705,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-09-14.log",
+            "hash": "0785ad07121f27c424240a40e8aca4c92825138e8eb86d27dfd70aaebd8421f3"
+        },
+        {
+            "date": 1702123204899,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-09-15.log",
+            "hash": "0012bc1c6d56e95cc7075ba9c83dd388c317479acd87a7309376c7d347403fbb"
+        },
+        {
+            "date": 1702126880524,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-09-16.log",
+            "hash": "f37ea0e917ff191d9e70130f158ebc9d11564c3e7cde93ebc3dff31a86044de8"
+        },
+        {
+            "date": 1702142712590,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-09-20.log",
+            "hash": "2e542d988f331ee405d66a2c044131afb53749e473fd3088499f7a8a4cdebf12"
+        },
+        {
+            "date": 1702144865443,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-09-21.log",
+            "hash": "6eff64e5db04c52f829ac9913070ae9a49d6c4e15a65cc9c4dd61ca22b4df550"
+        },
+        {
+            "date": 1702204276475,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-10-13.log",
+            "hash": "5d02e4ca7edfb9bcf909bbd15ac3591a9f245a50dd7955280ec971a5b4b5cbab"
+        },
+        {
+            "date": 1702206006627,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-10-14.log",
+            "hash": "f13fc6d7beb28a4f1ca16aec62447bcbc932672bf6a387f6e5b81c08fb7e2d6e"
+        },
+        {
+            "date": 1702209839681,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-10-15.log",
+            "hash": "15458f2437336af3c2f6a5ed9333ed24966aed8f1ec8a9f6db61cce99ad06b97"
+        },
+        {
+            "date": 1702216454940,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-10-16.log",
+            "hash": "a2b912ec0057838e92776252ba1e5a84ae4370a7db6600b6ec1e24d5c449a8d8"
+        },
+        {
+            "date": 1702289191626,
+            "name": "/home/omer/projects/Gefion2/storage/log/2023-12-11-13.log",
+            "hash": "530f49bc1435c08e3c7b29cb479420d028a9fcf2cd81ac16a59f20e0335c6106"
+        }
+    ],
+    "hashType": "sha256"
+}

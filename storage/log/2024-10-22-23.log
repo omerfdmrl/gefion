@@ -1,0 +1,58 @@
+[90m[2024-10-22 11:00:15.619 PM] [31merror[39m: TypeError: Cannot read properties of undefined (reading 'ref')
+    at Document.populate (/home/omer/Desktop/Gefion2/vendor/@gefion/db/core/Document.js:204:36)
+    at /home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:74:19
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:69:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listData (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Controllers/Admin.js:55:18)
+[90m[2024-10-22 11:00:24.244 PM] [31merror[39m: TypeError: Cannot read properties of undefined (reading 'ref')
+    at Document.populate (/home/omer/Desktop/Gefion2/vendor/@gefion/db/core/Document.js:204:36)
+    at /home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:74:19
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:69:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listData (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Controllers/Admin.js:55:18)
+[90m[2024-10-22 11:01:01.694 PM] [31merror[39m: MongoInvalidArgumentError: Collection name must be a String
+    at checkCollectionName (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/utils.js:54:15)
+    at new Collection (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/collection.js:68:41)
+    at Db.collection (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/db.js:205:16)
+    at DbMongoose.findOne (/home/omer/Desktop/Gefion2/vendor/@gefion/db-mongoose/DbMongoose.js:79:8)
+    at Document.populate (/home/omer/Desktop/Gefion2/vendor/@gefion/db/core/Document.js:207:8)
+    at /home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:74:19
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:69:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listData (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Controllers/Admin.js:55:18)
+[90m[2024-10-22 11:01:19.485 PM] [31merror[39m: MongoInvalidArgumentError: Collection name must be a String
+    at checkCollectionName (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/utils.js:54:15)
+    at new Collection (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/collection.js:68:41)
+    at Db.collection (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/db.js:205:16)
+    at DbMongoose.findOne (/home/omer/Desktop/Gefion2/vendor/@gefion/db-mongoose/DbMongoose.js:79:8)
+    at Document.populate (/home/omer/Desktop/Gefion2/vendor/@gefion/db/core/Document.js:205:8)
+    at /home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:74:19
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:69:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listData (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Controllers/Admin.js:55:18)
+[90m[2024-10-22 11:01:37.007 PM] [31merror[39m: MongoInvalidArgumentError: Collection name must be a String
+    at checkCollectionName (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/utils.js:54:15)
+    at new Collection (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/collection.js:68:41)
+    at Db.collection (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/db.js:205:16)
+    at DbMongoose.findOne (/home/omer/Desktop/Gefion2/vendor/@gefion/db-mongoose/DbMongoose.js:79:8)
+    at Document.populate (/home/omer/Desktop/Gefion2/vendor/@gefion/db/core/Document.js:207:8)
+    at /home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:74:19
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:69:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listData (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Controllers/Admin.js:55:18)
+[90m[2024-10-22 11:01:54.486 PM] [31merror[39m: MongoInvalidArgumentError: Query filter must be a plain object or ObjectId
+    at new FindOperation (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/operations/find.js:18:19)
+    at FindCursor._initialize (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/cursor/find_cursor.js:49:31)
+    at [kInit] (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/cursor/abstract_cursor.js:446:14)
+    at /home/omer/Desktop/Gefion2/node_modules/mongodb/lib/cursor/abstract_cursor.js:521:63
+    at node:internal/util:442:7
+    at new Promise (<anonymous>)
+    at node:internal/util:428:12
+    at next (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/cursor/abstract_cursor.js:522:15)
+    at FindCursor.next (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/cursor/abstract_cursor.js:223:16)
+    at Collection.findOne (/home/omer/Desktop/Gefion2/node_modules/mongodb/lib/collection.js:268:66)

@@ -1,0 +1,16 @@
+{
+  "name": "@gefion/storage-local",
+  "version": "1.0.0",
+  "description": "Gefion Storage Local",
+  "main": "StorageLocal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Storage",
+    "Local"
+  ],
+  "author": "Gefion",
+  "license": "ISC"
+}

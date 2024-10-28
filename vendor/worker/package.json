@@ -1,0 +1,15 @@
+{
+  "name": "@gefion/worker",
+  "version": "1.0.0",
+  "description": "Gefion Worker",
+  "main": "Worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Worker"
+  ],
+  "author": "Gefion",
+  "license": "ISC"
+}

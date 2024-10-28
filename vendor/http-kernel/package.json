@@ -1,0 +1,16 @@
+{
+  "name": "@gefion/http-kernel",
+  "version": "1.0.0",
+  "description": "Gefion Http Kernel",
+  "main": "HttpKernel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Http",
+    "Kernel"
+  ],
+  "author": "Gefion",
+  "license": "ISC"
+}

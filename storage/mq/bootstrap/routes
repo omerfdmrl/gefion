@@ -1,0 +1,1 @@
+{"bootstrap/routes":"{\"timestamp\":0,\"data\":[{\"method\":\"get\",\"path\":\"/dash/home\",\"callback\":null,\"name\":\"pref-home\"},{\"method\":\"get\",\"path\":\"/dash/home2\",\"callback\":null,\"name\":\"pref-home2\"},{\"method\":\"get\",\"path\":\"/dash/home3/:tagId\",\"middleware\":[null],\"validation\":\"test.testValidation\",\"name\":\"pref-home3\"}]}"}

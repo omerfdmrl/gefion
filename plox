@@ -1,0 +1,6 @@
+const Plox = require("@gefion/plox");
+
+async function bootstrap() {
+  await Promise.all([require("./index"), Plox.init()]);
+}
+bootstrap();

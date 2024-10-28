@@ -1,0 +1,30 @@
+[90m[2023-12-09 02:42:00.209 PM] [31merror[39m: AxiosError: Request failed with status code 404
+    at settle (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[90m[2023-12-09 02:43:24.596 PM] [31merror[39m: AxiosError: Request failed with status code 404
+    at settle (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[90m[2023-12-09 02:43:37.808 PM] [31merror[39m: AxiosError: Request failed with status code 404
+    at settle (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[90m[2023-12-09 02:45:57.147 PM] [31merror[39m: AxiosError: Request failed with status code 404
+    at settle (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[90m[2023-12-09 02:47:07.953 PM] [31merror[39m: AxiosError: Request failed with status code 404
+    at settle (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:1967:12)
+    at IncomingMessage.handleStreamEnd (/home/omer/projects/Gefion2/node_modules/axios/dist/node/axios.cjs:3062:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)

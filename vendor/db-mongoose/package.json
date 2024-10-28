@@ -1,0 +1,19 @@
+{
+  "name": "@gefion/db-mongoose",
+  "version": "1.0.0",
+  "description": "Gefion Db Mongoose",
+  "main": "DbMongoose.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Db",
+    "Mongoose"
+  ],
+  "author": "Gefion",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^7.5.1"
+  }
+}

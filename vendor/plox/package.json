@@ -1,0 +1,18 @@
+{
+  "name": "@gefion/plox",
+  "version": "1.0.0",
+  "description": "Gefion Plox",
+  "main": "Plox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Plox"
+  ],
+  "author": "Gefion",
+  "license": "ISC",
+  "dependencies": {
+    "console-table-printer": "^2.12.1"
+  }
+}

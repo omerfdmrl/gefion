@@ -1,0 +1,460 @@
+const { Table } = require("console-table-printer");
+const fs = require("fs");
+const path = require("path");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
+
+class GefionWizard {
+  #argv = process.argv.slice(2);
+
+  #templates = {
+    controller: {
+      default: `module.exports = {\n\tindex: (req, res) => {\n\t\t\t\n\t},\n};\n`,
+    },
+    model: {
+      default:
+        'const mongoose = require("mongoose");\n\nconst :name:Schema = mongoose.Schema(\n  {\n\t\tkey: value,\n  },\n  {\n\t\ttimestamps: true,\n  } \n);\n\nconst :name: = mongoose.model("User", :name:Schema);\n\nmodule.exports = :name:;\n',
+    },
+    validation: {
+      default:
+        'module.exports = {\n  testValidation: {\n\tparams: {\n\t  tagId: "required|numeric",\n\t},\n  },\n};\n',
+    },
+    job: {
+      default: `module.exports = class :name: {\n  constructor() {\n\t  super();\n  }\n};\n`,
+      mail: `const Mail = require("gefion-mail");\n\nmodule.exports = class :name: extends Mail {\n\tconstructor(to, name) {\n\t\tsuper();\n\t\tthis.template("welcomeMail").send({\n\t\t\tto,\n\t\t\tsubject: "Welcome To My App!",\n\t\t\tdata: { name },\n\t\t});\n\t}\n};\n`,
+    },
+    worker: {
+      default: `const { data, post } = require("gefion-worker");\n\nfunction calculator(data) {\n  return data;\n}\n\t\nconst result = calculator(data);\npost(result);\n`,
+    },
+  };
+
+  #paths = {
+    config: __dirname + "/configs/",
+    job: __dirname + "/app/Jobs/",
+    model: __dirname + "/app/Models/",
+    worker: __dirname + "/app/Workers/",
+    router: __dirname + "/routes/",
+    middleware: __dirname + "/app/Http/Middlewares/",
+    controller: __dirname + "/app/Http/Controllers/",
+    validation: __dirname + "/app/Http/Validations/",
+    view: __dirname + "/resources/views/",
+    template: __dirname + "/resource/templates/",
+  };
+
+  constructor() {
+    this.#warning("Welcome to the Gefinon!");
+    var command = this.#argv[0];
+    if (command) {
+      command = command.replace(":", "_");
+      if (this[command]) {
+        return this[command]();
+      }
+    }
+    this.#error("Undefined command!");
+  }
+
+  make_controller() {
+    const name = this.#argv[1];
+    const data = this.#templates.controller.default;
+    const path = `./app/Http/Controllers/${name}.js`;
+    if (fs.existsSync(path)) {
+      return this.#error("Controller Already Exists");
+    }
+    fs.writeFileSync(path, data);
+
+    this.#success("Controller Created");
+  }
+
+  make_model() {
+    const name = this.#argv[1];
+    const data = this.#templates.model.default.replaceAll(":name:", name);
+
+    const path = `./app/Models/${name}.js`;
+    if (fs.existsSync(path)) {
+      return this.#error("Model Already Exists");
+    }
+    fs.writeFileSync(path, data);
+
+    this.#success("Model Created");
+  }
+
+  make_validation() {
+    const name = this.#argv[1];
+    const data = this.#templates.validation.default;
+    const path = `./app/Http/Validations/${name}.js`;
+    if (fs.existsSync(path)) {
+      return this.#error("Validation Already Exists");
+    }
+    fs.writeFileSync(path, data);
+
+    this.#success("Validation Created");
+  }
+
+  make_job() {
+    var template = this.#checkArgv({
+      argv: "--template=",
+      split: "=",
+    });
+    if (!this.#templates.job[template]) {
+      template = "default";
+    }
+
+    const name = this.#argv[1];
+    const data = this.#templates.job[template].replaceAll(":name:", name);
+    const path = `./app/Jobs/${name}.js`;
+    if (fs.existsSync(path)) {
+      return this.#error("Job Already Exists");
+    }
+    fs.writeFileSync(path, data);
+
+    this.#success("Job Created");
+  }
+
+  make_worker() {
+    const name = this.#argv[1];
+    const data = this.#templates.worker.default;
+    const path = `./app/Workers/${name}.js`;
+    if (fs.existsSync(path)) {
+      return this.#error("Worker Already Exists");
+    }
+    fs.writeFileSync(path, data);
+
+    this.#success("Worker Created");
+  }
+
+  async add() {
+    const name = this.#argv[1];
+    if (!this.#checkPackage(name)) {
+      this.#error("Extension doesn't exists");
+      await exec(`npm i ${name}`);
+    }
+
+    const path = `./bootstrap/extensions.js`;
+    const fileContent = fs.readFileSync(path, "utf-8");
+    const lines = fileContent.split("\n");
+    const searchLine = `require("${name}");`;
+
+    const exists = lines.includes(searchLine);
+
+    if (exists) return this.#error("Extension already exists");
+
+    fs.appendFileSync(path, searchLine);
+    return this.#success("Extension added");
+  }
+
+  remove() {
+    const name = "gefion-" + this.#argv[1];
+
+    const path = `./bootstrap/extensions.js`;
+    const fileContent = fs.readFileSync(path, "utf-8");
+    const lines = fileContent.split("\n");
+    const searchLine = `require("${name}");`;
+
+    const exists = lines.includes(searchLine);
+
+    if (!exists) return this.#error("Extension not exists");
+
+    const newContent = lines.filter(
+      (line, index) => index !== lines.indexOf(searchLine)
+    );
+
+    fs.writeFileSync(path, newContent.join("\n"));
+    return this.#success("Extension removed");
+  }
+
+  list_routes() {
+    const path = `./storage/cache/bootstrap/routes`;
+    const fileContent = fs.readFileSync(path, "utf-8");
+    if (!fileContent) {
+      this.#error("Routes are not cached, please run application once");
+      return;
+    }
+    var data = JSON.parse(fileContent);
+    data = JSON.parse(data["bootstrap/routes"]).data;
+    const tableData = [];
+    data.forEach((d, i) => {
+      tableData.push({
+        index: i,
+        method: d.method,
+        path: d.path,
+        name: d.name,
+      });
+    });
+    this.#table(
+      "Routes",
+      [
+        { name: "index", color: "blue", title: "Index", alignment: "center" },
+        {
+          name: "method",
+          title: "Method",
+          color: "yellow",
+          alignment: "left",
+        },
+        { name: "path", title: "Path", alignment: "left" },
+        { name: "name", title: "Name", alignment: "left" },
+      ],
+      tableData
+    );
+  }
+
+  list_validations() {
+    const path = `./storage/cache/bootstrap/validations`;
+    const fileContent = fs.readFileSync(path, "utf-8");
+    if (!fileContent) {
+      this.#error("Validations are not cached, please run application once");
+      return;
+    }
+    var data = JSON.parse(fileContent);
+    data = JSON.parse(data["bootstrap/validations"]).data;
+    const tableData = [];
+    Object.keys(data).forEach((d, i) => {
+      tableData.push({
+        index: i,
+        validation: d,
+        params: JSON.stringify(data[d].params),
+      });
+    });
+    this.#table(
+      "Routes",
+      [
+        { name: "index", color: "blue", title: "Index", alignment: "center" },
+        {
+          name: "validation",
+          title: "Validation",
+          color: "yellow",
+          alignment: "left",
+        },
+        { name: "params", title: "Params", alignment: "left" },
+      ],
+      tableData
+    );
+  }
+
+  list_middlewares() {
+    const path = `./storage/cache/bootstrap/middlewares`;
+    const fileContent = fs.readFileSync(path, "utf-8");
+    if (!fileContent) {
+      this.#error("Middlewares are not cached, please run application once");
+      return;
+    }
+    var data = JSON.parse(fileContent);
+    data = JSON.parse(data["bootstrap/middlewares"]).data;
+    const tableData = [];
+    Object.keys(data).forEach((d, i) => {
+      tableData.push({
+        index: i,
+        middleware: d,
+        params: JSON.stringify(data[d].params),
+      });
+    });
+    this.#table(
+      "Routes",
+      [
+        { name: "index", color: "blue", title: "Index", alignment: "center" },
+        {
+          name: "middleware",
+          title: "Middleware",
+          color: "yellow",
+          alignment: "left",
+        },
+        { name: "params", title: "Params", alignment: "left" },
+      ],
+      tableData
+    );
+  }
+
+  list_jobs() {}
+
+  publish() {
+    const folderPath =
+      __dirname +
+      (this.#argv[1].startsWith("/") ? "" : "/") +
+      (this.#argv[1].endsWith("/") ? this.#argv[1] : this.#argv[1] + "/");
+    const publishFile = folderPath + ".publish";
+    const { filterKey, filterData } = this.#parseFilter(
+      this.#checkArgv({
+        argv: "--filter=",
+        split: "=",
+      })
+    );
+
+    const publishData = require("dotenv").config({
+      path: publishFile,
+    }).parsed;
+
+    if (!filterKey) filterKey = Object.keys(publishData);
+
+    Object.keys(publishData).forEach((key) => {
+      if (!Object.keys(this.#paths).includes(key)) return;
+      if (filterKey.length && !filterKey.includes(key)) return;
+      let value = publishData[key].split(",");
+      value.forEach((val) => {
+        if (
+          Object.keys(filterData).length &&
+          filterData[key] &&
+          !filterData[key].includes(path.parse(val).name)
+        ) {
+          return;
+        }
+        let filePath = folderPath + (val.startsWith("/") ? val.slice(1) : val);
+        fs.copyFileSync(filePath, this.#paths[key] + path.basename(val));
+      });
+    });
+
+    this.#success("Package Published");
+  }
+
+  help() {
+    this.#table(
+      "Commands",
+      [
+        { name: "index", color: "blue", title: "Index", alignment: "center" },
+        {
+          name: "command",
+          title: "Command",
+          color: "yellow",
+          alignment: "left",
+        },
+        { name: "description", title: "Description", alignment: "left" },
+        { name: "usage", title: "Usage", alignment: "left" },
+      ],
+      [
+        {
+          index: 1,
+          command: "make:controller",
+          description: "Make Contoller",
+          usage: "make:controller <name>",
+        },
+        {
+          index: 2,
+          command: "make:model",
+          description: "Make Model",
+          usage: "make:model <name>",
+        },
+        {
+          index: 3,
+          command: "make:validation",
+          description: "Make Validation",
+          usage: "make:validation <name>",
+        },
+        {
+          index: 4,
+          command: "make:job",
+          description: "Make Job",
+          usage: "make:job <name>",
+        },
+        {
+          index: 5,
+          command: "make:worker",
+          description: "Make Worker",
+          usage: "make:worker <name>",
+        },
+        {
+          index: 6,
+          command: "list:routes",
+          description: "List All Routes",
+          usage: "list:routes",
+        },
+        {
+          index: 7,
+          command: "list:validations",
+          description: "List All Validations",
+          usage: "list:validations",
+        },
+        {
+          index: 8,
+          command: "list:middlewares",
+          description: "List All Middlewares",
+          usage: "list:middlewares",
+        },
+        {
+          index: 9,
+          command: "list:jobs",
+          description: "List All Jobs",
+          usage: "list:jobs",
+        },
+        {
+          index: 10,
+          command: "add",
+          description: "Add Extension",
+          usage: "add <name>",
+        },
+        {
+          index: 11,
+          command: "remove",
+          description: "Remove Extension",
+          usage: "remove <name>",
+        },
+      ]
+    );
+  }
+
+  #checkPackage(name) {
+    try {
+      require(name);
+    } catch (error) {
+      return false;
+    }
+    return true;
+  }
+
+  #parseFilter(filter) {
+    let filterData = {};
+    let filterKey = [];
+
+    if (filter) {
+      const data = filter.split(",");
+      const regex = /\[(.*?)\]/g;
+      data.forEach((d) => {
+        const match = d.match(regex);
+        if (match) {
+          let key = d.replace(match[0], "");
+          filterKey.push(key);
+          filterData[key] = match[0]
+            .replace("[", "")
+            .replace("]", "")
+            .split(".");
+        } else {
+          filterKey.push(d);
+        }
+      });
+    }
+
+    return { filterData, filterKey };
+  }
+
+  #checkArgv({ argv, split, def }) {
+    const Arg = this.#argv.find((arg) => arg.startsWith(argv));
+    if (Arg) {
+      if (split) {
+        return Arg.split(split)[1];
+      } else {
+        return true;
+      }
+    }
+    return def;
+  }
+
+  #warning(message) {
+    console.log(`\x1b[33m${message}\x1b[0m`);
+  }
+
+  #success(message) {
+    console.log(`\x1b[32m${message}\x1b[0m`);
+  }
+
+  #error(message) {
+    console.log(`\x1b[31m${message}\x1b[0m`);
+  }
+
+  #table(title, columns, rows) {
+    const p = new Table({
+      title,
+      columns,
+    });
+    p.addRows(rows);
+    p.printTable();
+  }
+}
+
+new GefionWizard();

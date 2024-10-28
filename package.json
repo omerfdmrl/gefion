@@ -1,0 +1,70 @@
+{
+  "name": "gefion",
+  "version": "1.0.0",
+  "description": "Gefion, powerful and efficient",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "wizard": "node wizard",
+    "test": "mocha",
+    "prepare": "husky install",
+    "create-hook": "husky add .husky/pre-commit \"npm test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gefion/gefion.git"
+  },
+  "keywords": [
+    "gefion",
+    "nodejs",
+    "boilerplate"
+  ],
+  "author": "gefion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gefion/gefion/issues"
+  },
+  "homepage": "https://github.com/gefion/gefion#readme",
+  "dependencies": {
+    "@gefion/admin": "file:packages/admin",
+    "@gefion/auth": "file:packages/auth",
+    "@gefion/block-editor": "file:packages/block-editor",
+    "@gefion/cache": "file:vendor/cache",
+    "@gefion/cache-local": "file:vendor/cache-local",
+    "@gefion/cms": "file:packages/cms",
+    "@gefion/config": "file:vendor/config",
+    "@gefion/console-kernel": "file:vendor/console-kernel",
+    "@gefion/db": "file:vendor/db",
+    "@gefion/db-mongoose": "file:vendor/db-mongoose",
+    "@gefion/error": "file:vendor/error",
+    "@gefion/hook": "file:vendor/hook",
+    "@gefion/http-kernel": "file:vendor/http-kernel",
+    "@gefion/job": "file:vendor/job",
+    "@gefion/logger": "file:vendor/logger",
+    "@gefion/mail": "file:vendor/mail",
+    "@gefion/mail-handlebars": "file:vendor/mail-handlebars",
+    "@gefion/mail-smtp": "file:vendor/mail-smtp",
+    "@gefion/mq": "file:vendor/mq",
+    "@gefion/mq-local": "file:vendor/mq-local",
+    "@gefion/package": "file:vendor/package",
+    "@gefion/permission": "file:packages/permission",
+    "@gefion/plox": "file:vendor/plox",
+    "@gefion/router": "file:vendor/router",
+    "@gefion/schedule": "file:vendor/schedule",
+    "@gefion/server": "file:vendor/server",
+    "@gefion/server-express": "file:vendor/server-express",
+    "@gefion/storage": "file:vendor/storage",
+    "@gefion/storage-local": "file:vendor/storage-local",
+    "@gefion/validator": "file:vendor/validator",
+    "@gefion/worker": "file:vendor/worker"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22"
+  }
+}

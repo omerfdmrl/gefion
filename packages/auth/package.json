@@ -1,0 +1,20 @@
+{
+  "name": "@gefion/auth",
+  "version": "1.0.0",
+  "description": "Gefion Auth",
+  "main": "Auth.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gefion",
+    "Auth"
+  ],
+  "author": "Gefion",
+  "license": "ISC",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.1",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1"
+  }
+}

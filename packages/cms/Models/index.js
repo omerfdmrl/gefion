@@ -5,3 +5,6 @@ module.exports.User =
 
 module.exports.Post =
   model(Config.get("user.postCollection")) || require("./Post");
+
+module.exports.Post =
+  model(Config.get("user.pageCollection")) || require("./Page");

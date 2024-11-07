@@ -86,7 +86,7 @@ module.exports = class Storage {
    * @param {object} provider - The storage provider to register.
    */
   static register(provider) {
-    this.#providers[provider.driver] = provider;
+    this.#providers[provider.provider] = provider;
   }
 
   /**
@@ -95,12 +95,15 @@ module.exports = class Storage {
    * @returns {object} - The instance of the storage provider.
    */
   static disk(provider) {
+    const storageConfig = Config.get("filesystem");
+    const providerName = provider ? provider : storageConfig.provider;
+    const storageProvider = storageConfig[providerName];
     const validate = Validator.validate(
       provider,
       "in:" + Object.keys(this.#providers).join()
     );
+
     if (validate.failed()) return Error.ValidationError(validate.firstFail());
-    const providerConfig = Config.get("filesystem." + provider);
-    return new this.#providers[provider](providerConfig);
+    return new this.#providers[providerName](storageProvider);
   }
 };

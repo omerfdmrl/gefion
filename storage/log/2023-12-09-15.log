@@ -1,6 +1,0 @@
-[90m[2023-12-09 03:05:51.851 PM] [31merror[39m: AssertionError [ERR_ASSERTION]: '' == 87
-    at /home/omer/projects/Gefion2/test/vendor/Router/router.js:52:12
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-[90m[2023-12-09 03:06:04.197 PM] [31merror[39m: AssertionError [ERR_ASSERTION]: '' == 87
-    at /home/omer/projects/Gefion2/test/vendor/Router/router.js:52:12
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

@@ -21,6 +21,14 @@ DataMaker("user", {
     email: {
       isVisible: true,
     },
+    image: {
+      isVisible: {
+        list: false,
+        edit: true,
+        show: true,
+        filter: false,
+      },
+    },
   },
   schema: [
     {
@@ -99,6 +107,30 @@ DataMaker("user", {
             },
           ],
         },
+
+        {
+          type: "col",
+          breakpoint: "xl-4",
+          childs: [
+            {
+              type: "card",
+              header: [
+                {
+                  type: "text",
+                  text: "User Image",
+                },
+              ],
+              childs: [
+                {
+                  type: "file",
+                  accept: "image/*",
+                  preview: true,
+                  name: "image",
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],
@@ -131,6 +163,14 @@ DataMaker("post", {
         show: true,
       },
       field: "author.name",
+    },
+    image: {
+      isVisible: {
+        list: false,
+        edit: true,
+        filter: false,
+        show: true,
+      },
     },
   },
   schema: [
@@ -188,6 +228,7 @@ DataMaker("post", {
                   type: "file",
                   accept: "image/*",
                   preview: true,
+                  name: "image",
                 },
                 {
                   type: "row",
@@ -247,4 +288,123 @@ Hook.add(`admin-data-list-post`, ({ filter, options }) => {
     filter,
     options,
   };
+});
+
+DataMaker("page", {
+  listFields: ["title", "published", "createdAt"],
+  fields: {
+    content: {
+      isVisible: {
+        list: false,
+        edit: true,
+        filter: false,
+        show: true,
+      },
+    },
+    published: {
+      isVisible: {
+        list: true,
+        edit: true,
+        filter: true,
+        show: true,
+      },
+    },
+    author: {
+      isVisible: {
+        list: true,
+        edit: true,
+        filter: true,
+        show: true,
+      },
+      field: "author.name",
+    },
+    image: {
+      isVisible: {
+        list: false,
+        edit: true,
+        filter: false,
+        show: true,
+      },
+    },
+  },
+  schema: [
+    {
+      type: "row",
+      childs: [
+        {
+          type: "col",
+          breakpoint: "xl-8",
+          childs: [
+            {
+              type: "input",
+              name: "title",
+              class: "border-0",
+              placeholder: "Add Title...",
+              style:
+                "text-align:center; border: none !important; font-size: 30px; box-shadow: none;",
+            },
+            {
+              type: "html-editor",
+              name: "content",
+              class: "h-100",
+              placeholder: "Type / to choose a block",
+            },
+          ],
+        },
+        {
+          type: "col",
+          breakpoint: "xl-4",
+          childs: [
+            {
+              type: "card",
+              header: [
+                {
+                  type: "text",
+                  text: "Post Details",
+                },
+              ],
+              footer: [
+                {
+                  type: "ActionButton",
+                  callback: "save",
+                  text: "Save",
+                  on: "add",
+                },
+                {
+                  type: "ActionButton",
+                  callback: "update",
+                  text: "Update",
+                  on: "edit",
+                },
+              ],
+              childs: [
+                {
+                  type: "file",
+                  accept: "image/*",
+                  preview: true,
+                  name: "image",
+                },
+                {
+                  type: "row",
+                  childs: [
+                    {
+                      type: "col",
+                      breakpoint: "6",
+                      childs: [
+                        {
+                          type: "checkbox",
+                          name: "published",
+                          label: "Published",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
 });

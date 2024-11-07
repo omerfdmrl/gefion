@@ -107,7 +107,6 @@ const generateConfig = (Model, config) => {
           edit: config.editFields.includes(key),
           filter: config.filterFields.includes(key),
         },
-        field: key,
       };
     } else if (typeof config.fields[key].isVisible === "boolean") {
       config.fields[key] = {
@@ -117,9 +116,9 @@ const generateConfig = (Model, config) => {
           edit: config.fields[key].isVisible,
           filter: config.fields[key].isVisible,
         },
-        field: key,
       };
     }
+    if (!config.fields[key].field) config.fields[key].field = key;
     if (!config.fields[key].isVisible.edit) {
       config.schema.splice(index, 1);
     }

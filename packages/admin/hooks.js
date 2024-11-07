@@ -49,9 +49,11 @@ Hook.add("admin-page-packages", () => {
   };
 });
 
-Hook.add("admin-page-settings", () => {
+Hook.add("admin-page-settings", async () => {
+  const setting = await Setting();
+
   return {
-    view: Setting,
+    view: setting,
     callback: {
       save: (data) => {
         Object.keys(data).forEach((key) => {

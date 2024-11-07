@@ -1,7 +1,7 @@
 const { Model, Schema } = require("@gefion/db");
 const Config = require("@gefion/config");
 
-const postSchema = new Schema({
+const pageSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -19,10 +19,6 @@ const postSchema = new Schema({
     required: true,
     trim: true,
   },
-  author: {
-    type: model(Config.get("cms.userCollection", "User")),
-    required: true,
-  },
   published: {
     type: Boolean,
     default: false,
@@ -34,28 +30,28 @@ const postSchema = new Schema({
 });
 
 /**
- * Static method to check if a post is published
- * @param {ObjectId} postId - The post's ID
+ * Static method to check if a page is published
+ * @param {ObjectId} pageId - The page's ID
  * @returns {Promise<boolean>}
  */
-postSchema.statics.isPublished = async function (postId) {
-  const post = await this.findById(postId);
-  return !!post?.published;
+pageSchema.statics.isPublished = async function (pageId) {
+  const page = await this.findById(pageId);
+  return !!page?.published;
 };
 
 /**
- * Pre-save hook to update publishedAt timestamp if post is published
+ * Pre-save hook to update publishedAt timestamp if page is published
  * @param {void} next
  */
-postSchema.pre.save = async function (doc, next) {
+pageSchema.pre.save = async function (doc, next) {
   if (doc.isModified("published") && doc.published && !doc.publishedAt) {
     doc.publishedAt = new Date();
   }
   next();
 };
 
-const Post = new Model(Config.get("cms.postCollection", "Post"), postSchema, {
+const Page = new Model(Config.get("cms.pageCollection", "Page"), pageSchema, {
   timestamps: true,
 });
 
-module.exports = Post;
+module.exports = Page;

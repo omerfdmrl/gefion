@@ -1,4 +1,5 @@
 <script setup>
+import adminService from "@/services/admin.service";
 import apiService from "@/services/api.service";
 import { useDynamicFormStore } from "@/store/dynamicForm";
 const dynamicFormStore = useDynamicFormStore();
@@ -94,7 +95,7 @@ const dynamicFormStore = useDynamicFormStore();
           {{ field.label }}
         </label>
         <input
-          v-on:change="(e) => imagePreview(e, field.name)"
+          v-on:change="(e) => onImage(e, field)"
           :accept="field.accept || ''"
           class="form-control"
           type="file"
@@ -313,11 +314,16 @@ export default {
       }
       return output;
     },
-    imagePreview(event, name) {
-      const file = event.target.files[0];
-      if (file) {
-        this.data[name] = URL.createObjectURL(file);
-      }
+    onImage(event, field) {
+      const newImage = event.target.files[0];
+      this.data[field.name] = URL.createObjectURL(newImage);
+      const form = new FormData();
+      form.append("image", newImage);
+      adminService.uploadFile(form).then((response) => {
+        this.data[field.name] = response;
+        this.updateValue(field, this.data[field.name]);
+        this.$toast.success("Image uploaded");
+      });
     },
   },
 };

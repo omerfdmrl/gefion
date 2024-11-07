@@ -32,10 +32,15 @@ const doPageAction = (path, key, data) => {
   return apiService("admin/do-page-action", { path, key, data });
 };
 
+const uploadFile = (file) => {
+  return apiService("admin/upload-file", file);
+};
+
 export default {
   getAdminData,
   getSettings,
   getPage,
   doPageAction,
   saveSettings,
+  uploadFile,
 };

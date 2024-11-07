@@ -2,6 +2,8 @@ const Config = require("@gefion/config");
 const Hook = require("@gefion/hook");
 const paginate = require("../Helpers/paginate");
 const pick = require("../Helpers/pick");
+const multiparty = require("multiparty");
+const Error = require("@gefion/error");
 
 const getAdmin = (req, res) => {
   console.log(123);
@@ -87,13 +89,15 @@ const deleteData = (req, res) => {
 const uploadFile = async (req, res) => {
   const form = new multiparty.Form();
   form.parse(req, async (err, fields, files) => {
+    if (err) throw new Error.ServerError("Image coult not uploaded");
     const { image } = files;
     const { title } = fields;
-    const upload = await adminService.uploadFile(
+    const upload = await disk().upload(
       image[0],
       fields.title ? title : Date.now()
     );
-    res.send(upload.url);
+
+    res.send(upload.link ? upload.link : upload.path);
   });
 };
 

@@ -39,6 +39,7 @@ module.exports = class Config {
   /**
    * Retrieves the value associated with the specified key from the configuration.
    * If the key or any intermediate object in the key path is not found, the defaultValue is returned.
+   * @param {string} key - The key specifying the path in the configuration where the data found. Required.
    * @param {*} defaultValue - The value to be returned if the key or any intermediate object is not found. Optional.
    * @returns {*} The value associated with the key, or the defaultValue if not found. If the key or any intermediate object is not found and defaultValue is not provided, undefined is returned.
    * @throws {Error.ConfigurationError} If the key is not provided.

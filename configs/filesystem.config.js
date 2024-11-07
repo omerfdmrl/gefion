@@ -6,6 +6,8 @@ module.exports = {
   local: {
     driver: "local",
     path: Storage.storage("app"),
+    visibility: true,
+    link: "public/",
   },
 
   public: {

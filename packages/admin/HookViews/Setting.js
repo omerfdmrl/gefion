@@ -2,17 +2,18 @@ const Config = require("@gefion/config");
 const Hook = require("@gefion/hook");
 const ViewMaker = require("../Helpers/ViewMaker");
 
-const SettingsConfigs = Config.all();
-const ViewData = Object.keys(SettingsConfigs)
-  .filter((key) => ["cache", "mq", "mail", "schedule"].includes(key))
-  .reduce((obj, key) => {
-    obj[key] = SettingsConfigs[key];
-    return obj;
-  }, {});
+module.exports = async () => {
+  const SettingsConfigs = Config.all();
+  const ViewData = Object.keys(SettingsConfigs)
+    .filter((key) => ["cache", "mq", "mail", "schedule"].includes(key))
+    .reduce((obj, key) => {
+      obj[key] = SettingsConfigs[key];
+      return obj;
+    }, {});
 
-var SettingsData = {};
+  var SettingsData = {};
 
-SettingsData.cache = `<div class="row">
+  SettingsData.cache = `<div class="row">
             <div class="col-12 text-center" style="">
                 <label for="provider" class="form-label mt-3">Provider</label>
                 <select v-model="data.cache.provider" id="provider" class="form-select ms-auto me-auto" style="max-width: 350px;">
@@ -23,26 +24,29 @@ SettingsData.cache = `<div class="row">
           </div>
           <div class="accordion bg-transparent row ps-3 pe-3 mt-3" id="accordionCache"> `;
 
-Object.keys(ViewData.cache).forEach((key) => {
-  if (typeof ViewData.cache[key] == "object" && ViewData.cache[key].provider) {
-    const template = Hook.do(
-      `admin-settings-data-cache-${ViewData.cache[key].provider}`,
-      `data.cache.${key}`
-    );
+  Object.keys(ViewData.cache).forEach(async (key) => {
+    if (
+      typeof ViewData.cache[key] == "object" &&
+      ViewData.cache[key].provider
+    ) {
+      const template = await Hook.do(
+        `admin-settings-data-cache-${ViewData.cache[key].provider}`,
+        `data.cache.${key}`
+      );
 
-    SettingsData.cache += `<div class="col-md-6 accordion-item">
+      SettingsData.cache += `<div class="col-md-6 accordion-item">
     <h2 class="accordion-header" id="heading-${key}">
       <button class="accordion-button bg-transparent text-capitalize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${key}" aria-controls="collapse-${key}" aria-expanded="true">${key}</button>
     </h2>`;
-    SettingsData.cache += `<div id="collapse-${key}" class="accordion-collapse collapse" aria-labelledby="headings-${key}" data-bs-parent="#accordionCache" style=""><div class="accordion-body">`;
-    SettingsData.cache += template;
-    SettingsData.cache += `</div></div></div>`;
-  }
-});
+      SettingsData.cache += `<div id="collapse-${key}" class="accordion-collapse collapse" aria-labelledby="headings-${key}" data-bs-parent="#accordionCache" style=""><div class="accordion-body">`;
+      SettingsData.cache += template;
+      SettingsData.cache += `</div></div></div>`;
+    }
+  });
 
-SettingsData.cache += `</div>`;
+  SettingsData.cache += `</div>`;
 
-SettingsData.mail = `<div class="row">
+  SettingsData.mail = `<div class="row">
           <div class="col-12 text-center" style="">
               <label for="provider" class="form-label mt-3">Provider</label>
               <select v-model="data.mail.provider" id="provider" class="form-select ms-auto me-auto" style="max-width: 350px;">
@@ -53,26 +57,26 @@ SettingsData.mail = `<div class="row">
         </div>
         <div class="accordion bg-transparent row ps-3 pe-3 mt-3" id="accordionMail">`;
 
-Object.keys(ViewData.mail).forEach((key) => {
-  if (typeof ViewData.mail[key] == "object" && ViewData.mail[key].provider) {
-    const template = Hook.do(
-      `admin-settings-data-mail-${ViewData.mail[key].provider}`,
-      `data.mail.${key}`
-    );
+  Object.keys(ViewData.mail).forEach(async (key) => {
+    if (typeof ViewData.mail[key] == "object" && ViewData.mail[key].provider) {
+      const template = await Hook.do(
+        `admin-settings-data-mail-${ViewData.mail[key].provider}`,
+        `data.mail.${key}`
+      );
 
-    SettingsData.mail += `<div class="col-md-6 accordion-item">
+      SettingsData.mail += `<div class="col-md-6 accordion-item">
     <h2 class="accordion-header" id="heading-${key}">
       <button class="accordion-button bg-transparent text-capitalize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${key}" aria-controls="collapse-${key}" aria-expanded="true">${key}</button>
     </h2>`;
-    SettingsData.mail += `<div id="collapse-${key}" class="accordion-collapse collapse" aria-labelledby="headings-${key}" data-bs-parent="#accordionMail" style=""><div class="accordion-body">`;
-    SettingsData.mail += template;
-    SettingsData.mail += `</div></div></div>`;
-  }
-});
+      SettingsData.mail += `<div id="collapse-${key}" class="accordion-collapse collapse" aria-labelledby="headings-${key}" data-bs-parent="#accordionMail" style=""><div class="accordion-body">`;
+      SettingsData.mail += template;
+      SettingsData.mail += `</div></div></div>`;
+    }
+  });
 
-SettingsData.mail += `</div>`;
+  SettingsData.mail += `</div>`;
 
-SettingsData.mq = `<div class="row">
+  SettingsData.mq = `<div class="row">
         <div class="col-12 text-center" style="">
             <label for="provider" class="form-label mt-3">Provider</label>
             <select v-model="data.mq.provider" id="provider" class="form-select ms-auto me-auto" style="max-width: 350px;">
@@ -83,26 +87,26 @@ SettingsData.mq = `<div class="row">
       </div>
       <div class="accordion bg-transparent row ps-3 pe-3 mt-3" id="accordionExample">`;
 
-Object.keys(ViewData.mq).forEach((key) => {
-  if (typeof ViewData.mq[key] == "object" && ViewData.mq[key].provider) {
-    const template = Hook.do(
-      `admin-settings-data-mq-${ViewData.mq[key].provider}`,
-      `data.mq.${key}`
-    );
+  Object.keys(ViewData.mq).forEach(async (key) => {
+    if (typeof ViewData.mq[key] == "object" && ViewData.mq[key].provider) {
+      const template = await Hook.do(
+        `admin-settings-data-mq-${ViewData.mq[key].provider}`,
+        `data.mq.${key}`
+      );
 
-    SettingsData.mq += `<div class="col-md-6 accordion-item">
+      SettingsData.mq += `<div class="col-md-6 accordion-item">
     <h2 class="accordion-header" id="heading-${key}">
       <button class="accordion-button bg-transparent text-capitalize" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${key}" aria-controls="collapse-${key}" aria-expanded="true">${key}</button>
     </h2>`;
-    SettingsData.mq += `<div id="collapse-${key}" class="accordion-collapse collapse" aria-labelledby="headings-${key}" data-bs-parent="#accordionMail" style=""><div class="accordion-body">`;
-    SettingsData.mq += template;
-    SettingsData.mq += `</div></div></div>`;
-  }
-});
+      SettingsData.mq += `<div id="collapse-${key}" class="accordion-collapse collapse" aria-labelledby="headings-${key}" data-bs-parent="#accordionMail" style=""><div class="accordion-body">`;
+      SettingsData.mq += template;
+      SettingsData.mq += `</div></div></div>`;
+    }
+  });
 
-SettingsData.mq += `</div>`;
+  SettingsData.mq += `</div>`;
 
-SettingsData.schedule = `<div class="row">
+  SettingsData.schedule = `<div class="row">
               <div>
                 <label for="scheduled" class="form-label mt-3">Scheduled</label>
                 <input v-model="data.schedule.scheduled" class="form-check-input form-control" type="checkbox" id="scheduled" value="true">
@@ -120,9 +124,9 @@ SettingsData.schedule = `<div class="row">
               </div>
             </div>`;
 
-const settings = Hook.do("admin-settings", SettingsData);
+  const settings = await Hook.do("admin-settings", SettingsData);
 
-var template = `
+  var template = `
         <div class="mb-4">
             <div class="card">
               <div class="card-header">
@@ -149,17 +153,17 @@ var template = `
 
                     `;
 
-Object.keys(settings).forEach((key, index) => {
-  template += `<div 
+  Object.keys(settings).forEach((key, index) => {
+    template += `<div 
                 class="tab-pane fade ${index == 0 ? "active show" : ""}"
                 id="nav-${key}"
                 role="tabpanel" 
                 aria-labelledby="nav-${key}-tab">
               ${settings[key]}
               </div>`;
-});
+  });
 
-template += `
+  template += `
                   </div>
               </div>
             </div>
@@ -173,15 +177,16 @@ template += `
         </div>
     `;
 
-module.exports = ViewMaker({
-  template,
-  data: {
-    settings,
-    data: ViewData,
-  },
-  methods: {
-    thenSave: () => {
-      this.$toast.success("Saved");
+  return ViewMaker({
+    template,
+    data: {
+      settings,
+      data: ViewData,
     },
-  },
-});
+    methods: {
+      thenSave: () => {
+        this.$toast.success("Saved");
+      },
+    },
+  });
+};

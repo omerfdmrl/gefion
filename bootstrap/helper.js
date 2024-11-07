@@ -60,6 +60,15 @@ global.storage = (path) => {
 };
 
 /**
+ * Get the current disk of Storage module.
+ * @global
+ * @returns {string} The disk provider.
+ */
+global.disk = () => {
+  return Storage.disk();
+};
+
+/**
  * Get the Config module.
  * @global
  * @returns {Object} The Config module.

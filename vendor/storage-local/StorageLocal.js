@@ -1,5 +1,6 @@
 const fs = require("fs");
 const Storage = require("@gefion/storage");
+const Config = require("@gefion/config");
 
 /**
  * Represents the local provider for GefionStorage.
@@ -30,10 +31,30 @@ class Local {
    * @param {string} fileName - The desired file name.
    * @returns {Promise} - A promise that resolves when the file is uploaded successfully.
    */
-  upload(file, fileName) {
-    return this.rename(file.path, this.#getFilePath(fileName), (err) => {
-      if (err) return err;
-    });
+  async upload(file, fileName) {
+    const destinationPath = this.#getFilePath(fileName);
+    const fileExtension = file.originalFilename.substring(
+      file.originalFilename.lastIndexOf(".") + 1,
+      file.originalFilename.length
+    );
+    const fullFilePath = `${destinationPath}.${fileExtension}`;
+
+    try {
+      await fs.promises.mkdir(destinationPath, { recursive: true });
+
+      await fs.promises.copyFile(file.path, fullFilePath);
+
+      return {
+        path: fullFilePath,
+        link: this.#config.visibility
+          ? `${Config.get("server").url}${
+              this.#config.link
+            }${fileName}.${fileExtension}`
+          : null,
+      };
+    } catch (err) {
+      return err;
+    }
   }
 
   /**
@@ -110,7 +131,9 @@ class Local {
    * @returns {string} - The full file path.
    */
   #getFilePath(fileName) {
-    return this.#config.path + "/" + fileName;
+    return (
+      (this.#config.path.endsWith("/") ? this.#config.path : +"/") + fileName
+    );
   }
 }
 

@@ -1,7 +1,0 @@
-[90m[2024-10-22 10:59:46.336 PM] [31merror[39m: TypeError: Cannot read properties of undefined (reading 'ref')
-    at Document.populate (/home/omer/Desktop/Gefion2/vendor/@gefion/db/core/Document.js:204:36)
-    at /home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:74:19
-    at Array.forEach (<anonymous>)
-    at module.exports (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Helpers/paginate.js:69:33)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async listData (/home/omer/Desktop/Gefion2/packages/@gefion/admin/Controllers/Admin.js:55:18)

@@ -6,6 +6,8 @@ Router.post("/get-page", "getPage");
 
 Router.post("/do-page-action", "doPageAction");
 
+Router.post("/upload-file", "uploadFile");
+
 Router.post("/data/:model", "createData").get("/data/:model", "listData");
 
 Router.prefix("/data/:model")

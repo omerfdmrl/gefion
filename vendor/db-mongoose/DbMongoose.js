@@ -30,7 +30,7 @@ class DbMongoose {
         Logger.info("Connected to database");
       })
       .catch((error) => {
-        Error.DatabaseError(error);
+        throw new Error.DatabaseError(error);
       });
   }
 
